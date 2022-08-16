@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="linear" href="layers/linear.html" />
-    <link rel="prev" title="ivy.Container.static_lamb_update" href="gradients/lamb_update/static_lamb_update_container.html" /> 
+    <link rel="prev" title="ivy.Container.lamb_update" href="gradients/lamb_update/lamb_update_container.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -75,6 +75,8 @@
 <li class="toctree-l2"><a class="reference internal" href="layers/conv3d.html">conv3d</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layers/conv3d_transpose.html">conv3d_transpose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="layers/lstm_update.html">lstm_update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers/handle_padding.html">handle_padding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers/deconv_length.html">deconv_length</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear_algebra.html">Linear algebra</a></li>
@@ -97,14 +99,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Framework Classes</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/converters.html">Converters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/sequential.html">Sequential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stateful/initializers.html">Initializers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/layers.html">Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/norms.html">Norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/converters.html">Converters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stateful/optimizers.html">Optimizers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stateful/module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/norms.html">Norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stateful/activations.html">Activations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/sequential.html">Sequential</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul>
@@ -463,6 +465,11 @@ and <code class="code docutils literal notranslate"><span class="pre">ivy.Contai
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="ivy.functional.ivy.layers.deconv_length">
+<span class="sig-prename descclassname">ivy.</span></span><span class="sig-name descname"><span class="pre">deconv_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/layers.html#deconv_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.functional.ivy.layers.deconv_length" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="ivy.functional.ivy.layers.depthwise_conv2d">
 <span class="sig-prename descclassname">ivy.</span></span><span class="sig-name descname"><span class="pre">depthwise_conv2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NHWC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/layers.html#depthwise_conv2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.functional.ivy.layers.depthwise_conv2d" title="Permalink to this definition"></a></dt>
 <dd><p>Computes a 2-D depthwise convolution given 4-D input <code class="docutils literal notranslate"><span class="pre">x</span></code> and filters arrays.</p>
@@ -586,6 +593,11 @@ inputs broadcast to.</p></li>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.functional.ivy.layers.handle_padding">
+<span class="sig-prename descclassname">ivy.</span></span><span class="sig-name descname"><span class="pre">handle_padding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/layers.html#handle_padding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.functional.ivy.layers.handle_padding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.functional.ivy.layers.linear">
@@ -898,7 +910,7 @@ The shape of output array is <em>[batch_shape,num_queries,feat_dim]</em> .</p></
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="gradients/lamb_update/static_lamb_update_container.html" class="btn btn-neutral float-left" title="ivy.Container.static_lamb_update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gradients/lamb_update/lamb_update_container.html" class="btn btn-neutral float-left" title="ivy.Container.lamb_update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="layers/linear.html" class="btn btn-neutral float-right" title="linear" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
