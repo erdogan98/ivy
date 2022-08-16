@@ -391,7 +391,7 @@ def scaled_dot_product_attention(
         )
 
     # BS x Q x K
-    attn = ivy.softmax(sim, -1)
+    attn = ivy.softmax(sim, axis=-1)
 
     # BS x Q x F
     return ivy.einsum("... q k, ... k f -> ... q f", attn, v, out=out)
@@ -1199,3 +1199,26 @@ def lstm_update(
 
 
 lstm_update.unsupported_dtypes = {"torch": ("float16",)}
+
+
+# Helpers #
+
+
+def handle_padding(x, strides, filters, padding):
+    if padding == "SAME":
+        if x % strides == 0:
+            pad = max(filters - strides, 0)
+        else:
+            pad = max(filters - (x % strides), 0)
+    else:
+        pad = 0
+    return pad
+
+
+def deconv_length(dim_size, stride_size, kernel_size, padding, dilation=1):
+    kernel_size = kernel_size + (kernel_size - 1) * (dilation - 1)
+    if padding == "VALID":
+        dim_size = dim_size * stride_size + max(kernel_size - stride_size, 0)
+    elif padding == "SAME":
+        dim_size = dim_size * stride_size
+    return dim_size
